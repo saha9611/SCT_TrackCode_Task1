@@ -1,0 +1,111 @@
+<!DOCTYPE h tml>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding-top: 60px; /* Adjust padding to accommodate fixed navbar */
+            font-family: sans-serif;
+            transition: background-color 0.3s ease; /* Smooth background transition */
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            z-index: 100; /* Ensure navbar is on top */
+            transition: background-color 0.3s ease; /* Smooth background transition */
+        }
+
+        nav ul {
+            list-style: none;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #555;
+            color: #ddd;
+        }
+
+        section {
+            height: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            color: #333;
+        }
+
+        #home { background-color: grey; }
+        #about { background-color: brown; }
+        #services { background-color: cyan; }
+        #contact { background-color: yellow; }
+
+        .nav-scrolled {
+          background-color: #222; /* Darker background when scrolled */
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">Home Section</section>
+    <section id="about">About Section</section>
+    <section id="services">Services Section</section>
+    <section id="contact">Contact Section</section>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) { // Change 50 to your scroll threshold
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        const navLinks = document.querySelectorAll('nav ul li a');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                navLinks.forEach(otherLink => {
+                    otherLink.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
+
